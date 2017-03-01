@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz System</title>
+</head>
+<body>
+<form action="page3.html">
+    <header> <h1> Gerald's Quiz System </h1></header>
+
+    <main>
+        <h3> Question 2</h3>
+
+        <p>
+            Pick a number between 5 and 10 <br> <br>
+
+            <input type="number" name="answer" min="5" max="10" step="1"> <br> <br>
+
+        </p>
+
+
+
+        <h3> Question 3</h3>
+
+        <p>
+            What is your favourite colour? <br> <br>
+
+            <input type="color" name="answer"> <br> <br>
+
+        </p>
+
+
+        <h3> Question 4</h3>
+
+        <p>
+            What is your favourite location? <br> <br>
+
+            <select id="mySelect" onChange() = "JoinedOrNot()">
+                <option value="Aberdeen">Aberdeen</option>
+                <option value="Dundee">Dundee</option>
+                <option value="Kirriemuir">Kirriemuir</option>
+                <option id= "Other" value="Other"> Other</option>
+
+            </select> <br>
+            <label> Please specify: </label>
+            <input type="text" id="mySelect1">
+
+        </p>
+
+        <input type="submit" value="Next Question"> <br><br>
+    </main>
+
+</form>
+    <footer>
+        © SG Enterprises 2017
+    </footer>
+
+<script>
+
+        var cat = document.getElementById("mySelect");
+        if(cat.value == "Other"){
+            document.getElementById("mySelect1").disabled = true;
+        }else{
+            document.getElementById("mySelect1").disabled = false;
+        }
+
+
+</script>
+</body>
+</html>
