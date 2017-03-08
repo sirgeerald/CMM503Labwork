@@ -16,11 +16,11 @@
 
 <!-- MAIN START -->
 <main>
-    <a href="displayall.php"> <button type="button">Display All Movies</button></a> <br>
+    <a href="displayall.php"> <button type="button">Display All Movies</button></a> <br> <br>
 
-    <a href="displaymarvel.php"> <button type="button">Display All Marvel Movies</button></a> <br>
-    <a href="displayafter2010.php"> <button type="button">Display Created after 2010</button></a> <br>
-    <a href="displayxmen.php"> <button type="button">Display All X-Men Films</button></a> <br>
+    <a href="displaymarvel.php"> <button type="button">Display All Marvel Movies</button></a> <br> <br>
+    <a href="displayafter2010.php"> <button type="button">Display Created after 2010</button></a> <br> <br>
+    <a href="displayxmen.php"> <button type="button">Display All X-Men Films</button></a> <br> <br>
 
 </main>
 <!-- MAIN END -->
