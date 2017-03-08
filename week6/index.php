@@ -22,6 +22,12 @@
     <a href="displayafter2010.php"> <button type="button">Display Created after 2010</button></a> <br> <br>
     <a href="displayxmen.php"> <button type="button">Display All X-Men Films</button></a> <br> <br>
 
+    <br>
+    <br>
+
+
+    <a href="dbConnect.php.php"> <button type="button">Adminer</button></a> <br> <br>
+
 </main>
 <!-- MAIN END -->
 
