@@ -51,6 +51,7 @@ if ($i == 0 && $siteMySqlEnabled && file_exists($connstrfile)) {
     $cfg['Servers'][$i]['AllowNoPassword'] = false;
 }
 
+echo $i;
 ?>
 
 
