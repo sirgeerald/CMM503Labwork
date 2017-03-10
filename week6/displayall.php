@@ -7,17 +7,13 @@ include ("dbConnect.php");
  * Date: 10/03/2017
  * Time: 04:58
  */
-$sql_query = "SELECT * FROM marvelmovies";
+$mysqli_query = "SELECT * FROM marvelmovies";
 
 
-$result = $db ->query($sql_query);
 
-while ($row = $result -> fetch_array()){
-    echo "<p>" . $row[''] . "</p>";
+
+while ($result = mysqli_fetch_array($mysqli_query, MYSQLI_ASSOC)){
+    echo "<p>" . $result[''] . "</p>";
 }
-
-$result -> close();
-
-$db -> close();
 
 ?>
