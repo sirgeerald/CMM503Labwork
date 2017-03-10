@@ -8,12 +8,12 @@ include ("dbConnect.php");
  * Time: 04:58
  */
 $sql_query = "SELECT * FROM marvelmovies";
-echo $sql_query;
+
 
 $result = $db ->query($sql_query);
 
 while ($row = $result -> fetch_array()){
-    echo "<p>" . $row['sperheroName'] . "</p>";
+    echo "<p>" . $row[''] . "</p>";
 }
 
 $result -> close();
