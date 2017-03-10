@@ -8,6 +8,7 @@ include ("dbConnect.php");
  * Time: 04:58
  */
 $sql_query = "SELECT * FROM marvelmovies";
+echo $sql_query;
 
 $result = $db ->query($sql_query);
 
