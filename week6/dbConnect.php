@@ -18,7 +18,7 @@ foreach ($SERVER as $key => $value){
 }
 */
 $link = mysqli_connect("127.0.0.1:54480", "azure", "6#vWHD_$", "localdb");
-echo $link;
+echo "link sent";
 
 if (!$link){
     echo "Error Unable to Connect to MySQL." . PHP_EOL;
