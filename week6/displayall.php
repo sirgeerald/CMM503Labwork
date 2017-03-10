@@ -7,7 +7,7 @@ include ("dbConnect.php");
  * Date: 10/03/2017
  * Time: 04:58
  */
-$sql_query = "SELECT * FROM superheros";
+$sql_query = "SELECT * FROM marvelmovies";
 
 $result = $db ->query($sql_query);
 
