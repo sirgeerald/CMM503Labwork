@@ -9,5 +9,12 @@ include ("dbConnect.php");
  */
 $dbquery = "SELECT * FROM marvelmovies";
 
+$result=mysqli_query($dbquery);
+
+while ($row = $result -> fetch_array()){
+
+    echo "$row[0] - $row[1] - $row[2] - $row[3] - $row[4] <br/> ";
+}
+
 
 ?>
