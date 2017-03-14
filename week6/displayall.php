@@ -1,21 +1,53 @@
-<?php
-include ("dbConnect.php");
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8">
+      <title>Title</title> 
+</head>
+ 
+<body>  
 
-/**
- * Created by PhpStorm.
- * User: Sir
- * Date: 10/03/2017
- * Time: 04:58
- */
+<!-- HEADER START --> 
+<header>   
 
-$dbquery = "SELECT * FROM marvelmovies";
+</header>
+ <!-- HEADER END -->   
 
-$result=mysqli_query($dbquery);
-
-while ($row = $result -> fetch_array()){
-
-    echo "$row[0] - $row[1] - $row[2] - $row[3] - $row[4] <br/> ";
-}
+<!-- MAIN START --> 
+<main>   
+    <section>
+        <?php
+        include("dbConnect.php");
 
 
-?>
+        $dbquery = "SELECT * FROM marvelmovies";
+
+        $result = $link->query($dbquery);
+
+        while ($row = $result->fetch_array()) {
+
+            echo "$row[0] - $row[1] - $row[2] - $row[3] - $row[4] <br/> ";
+        }
+
+        $result->close();
+        $link->close();
+
+        ?>
+
+    </section>
+</main>
+ <!-- MAIN END -->   
+
+
+<!-- FOOTER START --> 
+<footer>
+
+
+</footer>
+ <!-- FOOTER END -->   
+</body>
+ 
+</html>
+
+
+
