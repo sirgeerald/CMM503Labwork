@@ -16,6 +16,17 @@
 
 <!-- MAIN START -->
 <main>
+
+    <?php
+      include ("dbConnect.php");
+
+      echo "dbhost - ". $connectstr_dbhost. "<br>";
+      echo "dbname - ". $connectstr_dbname. "<br>";
+      echo "dbusername - ". $connectstr_dbusername. "<br>";
+      echo "dbpassword - ". $connectstr_dbpassword. "<br>";
+
+    ?>
+
     <a href="displayall.php"> <button type="button">Display All Movies</button></a> <br> <br>
 
     <a href="displaymarvel.php"> <button type="button">Display All Marvel Movies</button></a> <br> <br>

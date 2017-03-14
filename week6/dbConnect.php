@@ -24,7 +24,7 @@ define('DB_USERNAME', $connectstr_dbusername);
 define('DB_PASSWORD', $connectstr_dbpassword);
 define('DB_DATABASE', $connectstr_dbname);
 
-$db = mysqli_connect($connectstr_dbhost, $connectstr_dbusername, $connectstr_dbpassword, $connectstr_dbname);
+/*$db = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);*/
 
 if (!$link){
     echo "Error Unable to Connect to MySQL." . PHP_EOL. "<br>";

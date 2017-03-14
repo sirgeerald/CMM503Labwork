@@ -20,6 +20,12 @@
         include("dbConnect.php");
 
 
+
+        echo "dbhost - ". $connectstr_dbhost. "<br>";
+        echo "dbname - ". $connectstr_dbname. "<br>";
+        echo "dbusername - ". $connectstr_dbusername. "<br>";
+        echo "dbpassword - ". $connectstr_dbpassword. "<br>";
+
         $dbquery = "SELECT * FROM marvelmovies";
 
         $result = $link->query($dbquery);
