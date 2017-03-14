@@ -37,8 +37,6 @@
     <br>
 
 
-    <a href="dbConnect.php"> <button type="button">Adminer</button></a> <br> <br>
-
 </main>
 <!-- MAIN END -->
 
