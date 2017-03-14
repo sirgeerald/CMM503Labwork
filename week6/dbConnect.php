@@ -27,7 +27,7 @@ define('DB_DATABASE', $connectstr_dbname);
 /*$db = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);*/
 
 if (!$link){
-    echo "Error Unable to Connect to MySQL." . PHP_EOL. "<br>";
+    echo "Error Unable to Connect ZZ to MySQL." . PHP_EOL. "<br>";
     echo "\n Debugging errno: " . mysqli_connect_errno(). PHP_EOL . "<br>";
     echo "\n Debugging error: " . mysqli_connect_error(). PHP_EOL.  "<br>";
     exit;
