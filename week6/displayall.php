@@ -7,6 +7,7 @@ include ("dbConnect.php");
  * Date: 10/03/2017
  * Time: 04:58
  */
+
 $dbquery = "SELECT * FROM marvelmovies";
 
 $result=mysqli_query($dbquery);
