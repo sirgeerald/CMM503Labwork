@@ -4,7 +4,7 @@ $connectstr_dbname='';
 $connectstr_dbusername='';
 $connectstr_dbpassword='';
 
-foreach ($SERVER as $key => $value){
+foreach ($_SERVER as $key => $value){
 
     if (strpos($key, "MYSQLCONNSTR_localdb") !== 0){
         continue;
