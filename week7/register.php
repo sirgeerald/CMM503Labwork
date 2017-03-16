@@ -21,14 +21,19 @@ if (isset($_POST['schoolIDnumber']) && isset($_POST['password'])){
     $result = mysqli_query($link, $query);
 
     if($result){
-        header("location: welcome.html"); // Redirecting To another Page
+        $smsg = "User Created Successfully.";
     }else{
         $fmsg ="User Registration Failed";
     }
 
 
+    /*if (mysqli_num_rows($result) == 1) {
+
+    } else {
+        echo "Incorrect username or password.";
+    }
 
     $result->close();
-    $link->close();
+    $link->close();*/
 
 }
