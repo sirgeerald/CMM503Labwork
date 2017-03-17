@@ -18,7 +18,7 @@ if (isset($_POST['schoolIDnumber']) && isset($_POST['password'])) {
     if ($result) {
         $smsg = "User Created Successfully.";
     } else {
-        $fmsg = "User Registration Failed";
+        $fmsg = "User Registration Failed".mysqli_error($link);
     }
 }
 ?>
@@ -122,6 +122,10 @@ if (isset($_POST['schoolIDnumber']) && isset($_POST['password'])) {
                                     <label for="passwordsignup_confirm" class="youpasswd" data-icon="p">Please confirm your password </label>
                                     <input id="passwordsignup_confirm" name="passwordsignup_confirm" required="required" type="password" placeholder="eg. X8df!90EO"/>
                                 </p>
+
+                                <?php if(isset($smsg)){ ?><div class="alert alert-success" role="alert"> <?php echo $smsg; ?> </div><?php } ?>
+                                <?php if(isset($fmsg)){ ?><div class="alert alert-danger" role="alert"> <?php echo $fmsg; ?> </div><?php } ?>
+
                                 <p class="signin button"> 
 									<input type="submit" value="Sign up"/> 
 								</p>
