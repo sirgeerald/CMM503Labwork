@@ -15,7 +15,7 @@ if (isset($_POST['schoolID']) && isset($_POST['password'])){
     if($result){
         $smsg = "User Created Successfully.";
     }else{
-        $fmsg ="User Registration Failed";
+        $fmsg ="User Registration Failed". mysqli_error($result);
     }
 }
 ?>
@@ -43,12 +43,12 @@ if (isset($_POST['schoolID']) && isset($_POST['password'])){
         <?php if(isset($fmsg)){ ?><div class="alert alert-danger" role="alert"> <?php echo $fmsg; ?> </div><?php } ?>
         <h2 class="form-signin-heading">Please Register</h2>
         <div class="input-group">
-            <span class="input-group-addon" id="basic-addon1">@</span>
+
             <input type="text" name="schoolID" class="form-control" placeholder="School ID" required>
         </div>
 
         <label for="fname" class="sr-only">First Name</label>
-        <input type="text" name="fname" id="fname" class="form-control" placeholder="Email address" required autofocus>
+        <input type="text" name="fname" id="fname" class="form-control" placeholder="Firstname" required autofocus>
 
         <label for="lname" class="sr-only">Last Name</label>
         <input type="text" name="lname" id="lname" class="form-control" placeholder="Last Name" required autofocus>
