@@ -9,7 +9,7 @@ if (isset($_POST['schoolID']) && isset($_POST['password'])){
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    $query = "INSERT INTO `users` (firstname, lastname, schoolID, email, password) VALUES ('$firstname','$lastname', '$schoolID','$email','$password')";
+    $query = "INSERT INTO `users` (firstname, lastname, schoolID, email, pwd) VALUES ('$firstname','$lastname', '$schoolID','$email','$password')";
 
     $result = mysqli_query($link, $query);
     if($result){
