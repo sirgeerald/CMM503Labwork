@@ -1,9 +1,36 @@
+<?php
+include("dbConnect.php");
+
+
+if (isset($_POST['schoolIDnumber']) && isset($_POST['password'])) {
+
+    $firstname = $_POST['firstname'];
+    $lastname = $_POST['lastname'];
+    $schoolID = $_POST['schoolIDnumber'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $query = "INSERT INTO `users` (firstname, lastname, schoolID, email, password) VALUES ('$firstname', '$lastname', '$schoolID','$email','$password')";
+
+
+    $result = mysqli_query($link, $query);
+
+    if ($result) {
+        $smsg = "User Created Successfully.";
+    } else {
+        $fmsg = "User Registration Failed";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <!--[if lt IE 7 ]> <html lang="en" class="no-js ie6 lt8"> <![endif]-->
 <!--[if IE 7 ]>    <html lang="en" class="no-js ie7 lt8"> <![endif]-->
 <!--[if IE 8 ]>    <html lang="en" class="no-js ie8 lt8"> <![endif]-->
 <!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+
+
     <head>
         <meta charset="UTF-8" />
         <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  -->
@@ -62,7 +89,7 @@
 
 
                         <div id="register" class="animate form">
-                            <form  action="register.php" autocomplete="on" method="post">
+                            <form  autocomplete="on" method="post">
 
                                 <?php if(isset($smsg)){ ?><div class="alert alert-success" role="alert"> <?php echo $smsg; ?> </div><?php } ?>
                                 <?php if(isset($fmsg)){ ?><div class="alert alert-danger" role="alert"> <?php echo $fmsg; ?> </div><?php } ?>

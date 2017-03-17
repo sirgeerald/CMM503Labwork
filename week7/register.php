@@ -1,11 +1,6 @@
 <?php
 include("dbConnect.php");
-/**
- * Created by PhpStorm.
- * User: Sir
- * Date: 16/03/2017
- * Time: 15:54
- */
+
 
 if (isset($_POST['schoolIDnumber']) && isset($_POST['password'])){
 
