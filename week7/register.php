@@ -16,9 +16,9 @@ if (isset($_POST['schoolIDnumber']) && isset($_POST['password'])){
     $result = mysqli_query($link, $query);
 
     if($result){
-        $smsg = "User Created Successfully.";
+        header("location: welcome.html");
     }else{
-        $fmsg ="User Registration Failed";
+        $fmsg ="User Registration Failed". mysqli_error($link);
     }
 
 

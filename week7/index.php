@@ -91,7 +91,7 @@ if (isset($_POST['schoolIDnumber']) && isset($_POST['password'])) {
 
 
                         <div id="register" class="animate form">
-                            <form  autocomplete="on" method="post">
+                            <form  action="register.php" autocomplete="on" method="post">
 
                                 <?php if(isset($smsg)){ ?><div class="alert alert-success" role="alert"> <?php echo $smsg; ?> </div><?php } ?>
                                 <?php if(isset($fmsg)){ ?><div class="alert alert-danger" role="alert"> <?php echo $fmsg; ?> </div><?php } ?>
