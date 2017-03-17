@@ -1,27 +1,100 @@
 <?php
-include("dbConnect.php");
 
 
-if (isset($_POST['schoolIDnumber']) && isset($_POST['password'])) {
+ ob_start();
+ session_start();
+ if( isset($_SESSION['user'])!="" ){
+     header("Location: login.php");
+ }
+ include_once ('dbConnect.php');
 
-    $firstname = $_POST['firstname'];
-    $lastname = $_POST['lastname'];
-    $schoolID = $_POST['schoolIDnumber'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+ $error = false;
 
-    $query = "INSERT INTO `users` (firstname, lastname, schoolID, email, pwd) VALUES ('$firstname', '$lastname', '$schoolID','$email','$password')";
+ if ( isset($_POST['btn-signup']) ) {
+
+     // clean user inputs to prevent sql injections
+     $firstname = trim($_POST['fname']);
+     $firstname = strip_tags($firstname);
+     $firstname = htmlspecialchars($firstname);
+
+     $lastname = trim($_POST['lname']);
+     $lastname = strip_tags($lastname);
+     $lastname = htmlspecialchars($lastname);
+
+     $schoolID = trim($_POST['schoolID']);
+     $schoolID = strip_tags($schoolID);
+     $schoolID = htmlspecialchars($schoolID);
+
+     $email = trim($_POST['email']);
+     $email = strip_tags($email);
+     $email = htmlspecialchars($email);
+
+     $pass = trim($_POST['pass']);
+     $pass = strip_tags($pass);
+     $pass = htmlspecialchars($pass);
+
+     // basic name validation
+     /*if (empty($name)) {
+         $error = true;
+         $nameError = "Please enter your full name.";
+     } else if (strlen($name) < 3) {
+         $error = true;
+         $nameError = "Name must have atleat 3 characters.";
+     } else if (!preg_match("/^[a-zA-Z ]+$/",$name)) {
+         $error = true;
+         $nameError = "Name must contain alphabets and space.";
+     }*/
+
+     //basic email validation
+     if ( !filter_var($email,FILTER_VALIDATE_EMAIL) ) {
+         $error = true;
+         $emailError = "Please enter valid email address.";
+     } else {
+         // check email exist or not
+         $query = "SELECT email FROM users WHERE email='$email'";
+         $result = mysqli_query($query);
+         $count = mysqli_num_rows($result);
+         if($count!=0){
+             $error = true;
+             $emailError = "Provided Email is already in use.";
+         }
+     }
+     // password validation
+     if (empty($pass)){
+         $error = true;
+         $passError = "Please enter password.";
+     } else if(strlen($pass) < 6) {
+         $error = true;
+         $passError = "Password must have atleast 6 characters.";
+     }
+
+     // password encrypt using SHA256();
+     $password = hash('sha256', $pass);
+
+     // if there's no error, continue to signup
+     if( !$error ) {
+
+         $query = "INSERT INTO users(firstname,lastname, schoolID,email,pwd) VALUES('$firstname','$lastname','$schoolID','$email','$pass')";
+         $res = mysqli_query($query);
+
+         if ($res) {
+             $errTyp = "success";
+             $errMSG = "Successfully registered, you may login now";
+             unset($name);
+             unset($email);
+             unset($pass);
+         } else {
+             $errTyp = "danger";
+             $errMSG = "Something went wrong, try again later...".mysqli_error($link);
+         }
+
+     }
 
 
-    $result = mysqli_query($link, $query);
-
-    if ($result) {
-        $smsg = "User Created Successfully.";
-    } else {
-        $fmsg = "User Registration Failed".mysqli_error($link);
-    }
-}
+ }
 ?>
+
+
 
 <!DOCTYPE html>
 <!--[if lt IE 7 ]> <html lang="en" class="no-js ie6 lt8"> <![endif]-->
@@ -36,9 +109,7 @@ if (isset($_POST['schoolIDnumber']) && isset($_POST['password'])) {
         <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  -->
         <title>Login</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-        <meta name="description" content="Login and Registration Form with HTML5 and CSS3" />
-        <meta name="keywords" content="html5, css3, form, switch, animation, :target, pseudo-class" />
-        <meta name="author" content="Codrops" />
+        <meta name="description" content="Login and Registration Form " />
         <link rel="shortcut icon" href="../favicon.ico"> 
         <link rel="stylesheet" type="text/css" href="css/demo.css" />
         <link rel="stylesheet" type="text/css" href="css/style.css" />
@@ -48,9 +119,7 @@ if (isset($_POST['schoolIDnumber']) && isset($_POST['password'])) {
         <div class="container">
 
             <header>
-                <h1>Login and Registration Form <span>with HTML5 and CSS3</span></h1>
-                <?php if(isset($smsg)){ ?><div class="alert alert-success" role="alert"> <?php echo $smsg; ?> </div><?php } ?>
-                <?php if(isset($fmsg)){ ?><div class="alert alert-danger" role="alert"> <?php echo $fmsg; ?> </div><?php } ?>
+                <h1>Login and Registration Form </h1>
 
             </header>
             <section>				
@@ -91,12 +160,16 @@ if (isset($_POST['schoolIDnumber']) && isset($_POST['password'])) {
 
 
                         <div id="register" class="animate form">
-                            <form  action="register.php" autocomplete="on" method="post">
 
-                                <?php if(isset($smsg)){ ?><div class="alert alert-success" role="alert"> <?php echo $smsg; ?> </div><?php } ?>
-                                <?php if(isset($fmsg)){ ?><div class="alert alert-danger" role="alert"> <?php echo $fmsg; ?> </div><?php } ?>
+                            <form  action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="on" method="post">
 
                                 <h1> Sign up </h1>
+
+                                <?php
+                                if ( isset($errMSG) ) {
+
+                                ?>
+
                                 <p> 
                                     <label for="fname" class="uname" data-icon="u">First name</label>
                                     <input id="fname" name="fname" required="required" type="text" placeholder="mysuperusername690" />
