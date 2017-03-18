@@ -13,7 +13,7 @@
         <title>Login</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
         <meta name="description" content="Login and Registration Form " />
-        <link rel="shortcut icon" href="../favicon.ico"> 
+        <!--<link rel="shortcut icon" href="../favicon.ico"> -->
         <link rel="stylesheet" type="text/css" href="css/demo.css" />
         <link rel="stylesheet" type="text/css" href="css/style.css" />
 		<link rel="stylesheet" type="text/css" href="css/animate-custom.css" />
@@ -63,43 +63,8 @@
 
 
                         <div id="register" class="animate form">
-                            <?php
-                            require ('dbConnect.php');
 
-                            // If form submitted, insert values into the database.
-
-                            if (isset($_REQUEST['schoolIDnumber'])){
-                            // removes backslashes
-                            $schoolID = stripslashes($_REQUEST['schoolIDnumber']);
-                            //escapes special characters in a string
-                            $schoolID = mysqli_real_escape_string($link, $username);
-
-                            $firstname = stripslashes($_REQUEST['fname']);
-                            $firstname = mysqli_real_escape_string($link, $firstname);
-
-                            $lastname = stripslashes($_REQUEST['lname']);
-                            $lastname = mysqli_real_escape_string($link, $lastname);
-
-                            $email = stripslashes($_REQUEST['email']);
-                            $email = mysqli_real_escape_string($link, $email);
-
-                            $password = stripslashes($_REQUEST['password']);
-                            $password = mysqli_real_escape_string($link, $password);
-
-                            $query = "INSERT into `users` (firstname,lastname, schoolID, email, password) VALUES ('$firstname', '$lastname', '$schoolID', '$email', '".md5($password)."')";
-                            $result = mysqli_query($con, $query);
-
-                            if ($result){
-                            echo "<div class='form'>
-                            <h3>You are registered successfully.</h3>
-                                    <br/>Click here to <a href='login.php'>Login</a></div>";
-                            }
-                            }else{
-                            ?>
-
-
-
-                            <form  action="" autocomplete="off" method="post">
+                            <form  action="register.php" autocomplete="off" method="post">
 
                                 <h1> Sign up </h1>
 
@@ -133,15 +98,15 @@
 
 
                                 <p class="signin button"> 
-									<input type="submit" value="Sign up"/> 
+									<input type="submit" value="Sign up" name="submit"/>
 								</p>
                                 <p class="change_link">  
 									Already a member ?
-									<a href="#tologin" class="to_register"> Go and log in </a>
+									<a href="#tologin" class="to_register"> Log in here </a>
 								</p>
                             </form>
                         </div>
-						 <?php } ?>
+
                     </div>
                 </div>  
             </section>

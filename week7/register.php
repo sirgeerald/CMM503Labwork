@@ -1,34 +1,22 @@
+
 <?php
-include("dbConnect.php");
-
-
-if (isset($_POST['schoolIDnumber']) && isset($_POST['password'])){
-
-    $firstname = $_POST['firstname'];
-    $lastname = $_POST['lastname'];
-    $schoolID = $_POST['schoolIDnumber'];
+require('dbConnect.php');
+// If the values are posted, insert them into the database.
+if (isset($_POST['schoolID']) && isset($_POST['password'])){
+    $schoolID = $_POST['schoolID'];
+    $firstname = $_POST['fname'];
+    $lastname = $_POST['lname'];
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    $query = "INSERT INTO `users` (firstname, lastname, schoolID, email, password) VALUES ('$firstname', '$lastname', '$schoolID','$email','$password')";
-
+    $query = "INSERT INTO `users` (firstname, lastname, schoolID, email, pwd) VALUES ('$firstname','$lastname', '$schoolID','$email','$password')";
 
     $result = mysqli_query($link, $query);
-
     if($result){
-        header("location: welcome.html");
+        $smsg = "User Created Successfully.";
+        header("location: index.php");
     }else{
         $fmsg ="User Registration Failed". mysqli_error($link);
     }
-
-
-    /*if (mysqli_num_rows($result) == 1) {
-
-    } else {
-        echo "Incorrect username or password.";
-    }
-
-    $result->close();
-    $link->close();*/
-
 }
+?>
