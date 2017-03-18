@@ -98,7 +98,7 @@
 
 
                                 <p class="signin button"> 
-									<input type="submit" value="Sign up" name="submit"/>
+									<input type="submit" value="Sign up" name="signupsubmit"/>
 								</p>
                                 <p class="change_link">  
 									Already a member ?
