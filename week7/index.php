@@ -1,100 +1,3 @@
-<?php
-
-
- ob_start();
- session_start();
- if( isset($_SESSION['user'])!="" ){
-     header("Location: login.php");
- }
- include_once ('dbConnect.php');
-
- $error = false;
-
- if ( isset($_POST['btn-signup']) ) {
-
-     // clean user inputs to prevent sql injections
-     $firstname = trim($_POST['fname']);
-     $firstname = strip_tags($firstname);
-     $firstname = htmlspecialchars($firstname);
-
-     $lastname = trim($_POST['lname']);
-     $lastname = strip_tags($lastname);
-     $lastname = htmlspecialchars($lastname);
-
-     $schoolID = trim($_POST['schoolID']);
-     $schoolID = strip_tags($schoolID);
-     $schoolID = htmlspecialchars($schoolID);
-
-     $email = trim($_POST['email']);
-     $email = strip_tags($email);
-     $email = htmlspecialchars($email);
-
-     $pass = trim($_POST['pass']);
-     $pass = strip_tags($pass);
-     $pass = htmlspecialchars($pass);
-
-     // basic name validation
-     /*if (empty($name)) {
-         $error = true;
-         $nameError = "Please enter your full name.";
-     } else if (strlen($name) < 3) {
-         $error = true;
-         $nameError = "Name must have atleat 3 characters.";
-     } else if (!preg_match("/^[a-zA-Z ]+$/",$name)) {
-         $error = true;
-         $nameError = "Name must contain alphabets and space.";
-     }*/
-
-     //basic email validation
-     if ( !filter_var($email,FILTER_VALIDATE_EMAIL) ) {
-         $error = true;
-         $emailError = "Please enter valid email address.";
-     } else {
-         // check email exist or not
-         $query = "SELECT email FROM users WHERE email='$email'";
-         $result = mysqli_query($query);
-         $count = mysqli_num_rows($result);
-         if($count!=0){
-             $error = true;
-             $emailError = "Provided Email is already in use.";
-         }
-     }
-     // password validation
-     if (empty($pass)){
-         $error = true;
-         $passError = "Please enter password.";
-     } else if(strlen($pass) < 6) {
-         $error = true;
-         $passError = "Password must have atleast 6 characters.";
-     }
-
-     // password encrypt using SHA256();
-     $password = hash('sha256', $pass);
-
-     // if there's no error, continue to signup
-     if( !$error ) {
-
-         $query = "INSERT INTO users(firstname,lastname, schoolID,email,pwd) VALUES('$firstname','$lastname','$schoolID','$email','$pass')";
-         $res = mysqli_query($query);
-
-         if ($res) {
-             $errTyp = "success";
-             $errMSG = "Successfully registered, you may login now";
-             unset($name);
-             unset($email);
-             unset($pass);
-         } else {
-             $errTyp = "danger";
-             $errMSG = "Something went wrong, try again later...".mysqli_error($link);
-         }
-
-     }
-
-
- }
-?>
-
-
 
 <!DOCTYPE html>
 <!--[if lt IE 7 ]> <html lang="en" class="no-js ie6 lt8"> <![endif]-->
@@ -160,15 +63,46 @@
 
 
                         <div id="register" class="animate form">
+                            <?php
+                            require ('dbConnect.php');
 
-                            <form  action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="on" method="post">
+                            // If form submitted, insert values into the database.
 
-                                <h1> Sign up </h1>
+                            if (isset($_REQUEST['schoolIDnumber'])){
+                            // removes backslashes
+                            $schoolID = stripslashes($_REQUEST['schoolIDnumber']);
+                            //escapes special characters in a string
+                            $schoolID = mysqli_real_escape_string($link, $username);
 
-                                <?php
-                                if ( isset($errMSG) ) {
+                            $firstname = stripslashes($_REQUEST['fname']);
+                            $firstname = mysqli_real_escape_string($link, $firstname);
+
+                            $lastname = stripslashes($_REQUEST['lname']);
+                            $lastname = mysqli_real_escape_string($link, $lastname);
+
+                            $email = stripslashes($_REQUEST['email']);
+                            $email = mysqli_real_escape_string($link, $email);
+
+                            $password = stripslashes($_REQUEST['password']);
+                            $password = mysqli_real_escape_string($link, $password);
+
+                            $query = "INSERT into `users` (firstname,lastname, schoolID, email, password) VALUES ('$firstname', '$lastname', '$schoolID', '$email', '".md5($password)."')";
+                            $result = mysqli_query($con, $query);
+
+                            if ($result){
+                            echo "<div class='form'>
+                            <h3>You are registered successfully.</h3>
+                                    <br/>Click here to <a href='login.php'>Login</a></div>";
+                            }
+                            }else{
+                            ?>
+
+
 
                                 ?>
+                            <form  action="" autocomplete="off" method="post">
+
+                                <h1> Sign up </h1>
 
                                 <p> 
                                     <label for="fname" class="uname" data-icon="u">First name</label>
@@ -208,7 +142,7 @@
 								</p>
                             </form>
                         </div>
-						
+						 <?php } ?>
                     </div>
                 </div>  
             </section>
