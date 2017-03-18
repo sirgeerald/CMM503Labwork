@@ -3,13 +3,13 @@
 require('dbConnect.php');
 // If the values are posted, insert them into the database.
 if (isset($_POST['signupsubmit'])){
-    $schoolID = $_POST['schoolID'];
+    $schoolID = $_POST['schoolIDnumber'];
     $firstname = $_POST['fname'];
     $lastname = $_POST['lname'];
     $email = $_POST['email'];
-    $password = $_POST['password'];
+    $password = $_POST['passwordsignup'];
 
-    $query = "INSERT INTO `users` (firstname, lastname, schoolID, email, pwd) VALUES ('$firstname','$lastname', '$schoolID','$email','$password')";
+    $query = "INSERT INTO `users` (firstname,lastname,schoolID,email,pwd) VALUES ('$firstname','$lastname', '$schoolID','$email','$password')";
 
     define('DB_SERVER', $connectstr_dbhost);
     define('DB_USERNAME', $connectstr_dbname);

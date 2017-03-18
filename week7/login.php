@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Sir
- * Date: 16/03/2017
- * Time: 05:47
- */
 
 include("dbConnect.php");
 
