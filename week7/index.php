@@ -99,7 +99,6 @@
 
 
 
-                                ?>
                             <form  action="" autocomplete="off" method="post">
 
                                 <h1> Sign up </h1>
