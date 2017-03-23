@@ -36,7 +36,7 @@
     while ($row = $result->fetch_array()) {
         $firstname = $row['firstname'];
         $lastname = $row['lastname'];
-        $mainSuperpower = $row['mainSuperpower'];
+        $mainSuperpower = $row['mainSuperPower'];
         $villanFought = $row['villanFought'];
         echo "<article>
             
