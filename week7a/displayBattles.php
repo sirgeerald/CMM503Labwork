@@ -9,7 +9,7 @@
 <!-- HEADER START -->
 <header>
    <h1> Superhero system</h1>
-    <h2> Display all Superhero </h2>
+    <h2> Display all Battles</h2>
     <p><a href="index.php"> Return to home .. </a></p>
 
 </header>
@@ -34,13 +34,13 @@
     $result = $link->query($sql_query);
 
     while ($row = $result->fetch_array()) {
-        $firstname = $row['firstName'];
-        $lastname = $row['lastName'];
+        $firstname = $row['firstname'];
+        $lastname = $row['lastname'];
         $mainSuperpower = $row['mainSuperpower'];
         $villanFought = $row['villanFought'];
         echo "<article>
             
-            <p> This superhero known as is <strong>{$firstname} {$lastname} </strong> recently fought <strong>{$villanFought}</strong> using <strong>{$mainSuperpower}</strong></p>
+            <p> This superhero known as <strong>{$firstname} {$lastname} </strong> recently fought <strong>{$villanFought}</strong> using <strong>{$mainSuperpower}</strong></p>
               </article>";
     }
     ?>

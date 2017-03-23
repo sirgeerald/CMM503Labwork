@@ -9,7 +9,7 @@
 <!-- HEADER START -->
 <header>
    <h1> Superhero system</h1>
-    <h2> Superhero Home page</h2>
+    <h2> Record a Battle </h2>
 
 </header>
 <!-- HEADER END -->
@@ -35,7 +35,7 @@
             echo "<option value=' {$superheroID}'> {$firstname} {$lastname}</option> ";
         }
         ?>
-    </select> <br>
+    </select> <br><br>
 
     <input type="text" name="villan" placeholder="Villan Fought"> <br>
     <input type="submit" text="Record Battle">
