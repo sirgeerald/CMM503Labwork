@@ -36,7 +36,7 @@
                 $firstname = $row['firstName'];
                 $lastname = $row['lastName'];
                 $id = $row['superheroID'];
-                echo "<li> <a href='displayBattles.php?id={$id}'> <button text='Battles for {$firstname} {$lastname}' </a> </li>";
+                echo "<li> <a href='displayBattles.php?id={$id}'> <button value='Battles for {$firstname} {$lastname}' </a> </li>";
             }
             ?>
         </ul>
