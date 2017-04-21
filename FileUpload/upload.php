@@ -15,6 +15,8 @@ include ('../registration/dbConnect.php');
             if (move_uploaded_file($_FILES['file_upload']['tmp_name'], $targetPath)){
 
                 echo "The file ". basename($_FILES['file_upload']['name']). " has been uploaded to " .$targetPath;
+
+                echo "<br><a href='$targetPath'> File Uploaded</a>";
             }else{
                 echo "Error uploading file";
             }
