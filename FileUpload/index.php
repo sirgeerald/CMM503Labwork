@@ -24,7 +24,7 @@ $res = mysqli_query($link, $sql);
          $type = $row['type'];
          $size = $row['size'];
 
-         echo $id . " " . $file.;
+         echo $id . " " . $file. "";
      }
     ?>
 </div>
