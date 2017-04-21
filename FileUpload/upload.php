@@ -6,7 +6,7 @@ include ('../registration/dbConnect.php');
 
     print_r($_FILES);
 
-    $targetPath = "uploads/";
+    $targetPath = "../FileUpload/uploads/";
 
     $targetPath = $targetPath. basename($_FILES['file_upload']['name']);
 
@@ -14,7 +14,7 @@ include ('../registration/dbConnect.php');
         if (substr($_FILES['file_upload']['name'], -3) == 'txt'){
             if (move_uploaded_file($_FILES['file_upload']['tmp_name'], $targetPath)){
 
-                echo "The file". basename($_FILES['file_upload']['name']). "has been uploaded";
+                echo "The file ". basename($_FILES['file_upload']['name']). " has been uploaded";
             }else{
                 echo "Error uploading file";
             }
