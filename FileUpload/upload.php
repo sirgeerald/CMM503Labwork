@@ -1,10 +1,12 @@
 <?php
 include ('../registration/dbConnect.php');
-if(isset($_POST['btn_upload']))
-{
+
+if(isset($_POST['btn_upload'])) {
 
 
-    $name = $_FILES['file_upload']['name'];
+    print_r($_FILES);
+
+    /*$name = $_FILES['file_upload']['name'];
     $size = $_FILES['file_upload']['size'];
     $tmp = $_FILES['file_upload']['tmp_name'];
     $type = $_FILES['file_upload']['type'];
@@ -22,30 +24,8 @@ if(isset($_POST['btn_upload']))
         die("Please select a file ");
     }
 
+}*/
 }
 ?>
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title>File Uploading With PHP and MySql</title>
-    <!--<link rel="stylesheet" href="style.css" type="text/css" />-->
-</head>
-<body>
-<div id="header">
-    <label>File Uploading With PHP and MySql</label> <br>
-
-</div>
-<div id="body">
-    <form method="post" enctype="multipart/form-data">
-        <br>  <input type="file" name="file_upload" />
-        <button type="submit" name="btn-upload">upload</button>
-    </form>
-
-    <a href="index.php"> Home</a>
-
-</div>
-
-</body>
-</html>
 
 

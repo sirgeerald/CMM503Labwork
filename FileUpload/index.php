@@ -14,19 +14,11 @@ $res = mysqli_query($link, $sql);
 </head>
 <body>
 <div id="header">
-    <a href="upload.php"> Add new docs</a>
+    <form method="post" action="upload.php" enctype="multipart/form-data">
+        <br>  <input type="file" name="file_upload" />
+        <button type="submit" name="btn-upload">upload</button>
+    </form>
 
-    <?php
-     while ($row = mysqli_fetch_array($res))
-     {
-         $id = $row['id'];
-         $file = $row['file'];
-         $type = $row['type'];
-         $size = $row['size'];
-
-         echo $id . " " . $file. "";
-     }
-    ?>
 </div>
 
 </body>
