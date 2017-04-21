@@ -12,7 +12,7 @@ if(isset($_POST['btn_upload']))
 
     if ($name){
 
-        $location = "uploads/$name";
+        $location = "/uploads/$name";
         move_uploaded_file($tmp, $location);
 
         $link -> query("INSERT INTO tbl_uploads (file,type,size) VALUES('$location','$type','$size')");
