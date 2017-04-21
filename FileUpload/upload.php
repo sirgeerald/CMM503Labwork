@@ -41,6 +41,8 @@ if(isset($_POST['btn_upload']))
         <button type="submit" name="btn-upload">upload</button>
     </form>
 
+    <a href="index.php"> Add new docs</a>
+
 </div>
 
 </body>
