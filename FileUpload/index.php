@@ -24,10 +24,11 @@ $filename = $_POST['file_upload'];
 if (isset($_POST['btn-upload'])){
 
     $fnm = $_FILES['file_upload']['name'];
+    $ftype = $_FILES['file_upload']['type'];
     $destination = "./uploads/". $fnm;
     move_uploaded_file($_FILES['file_upload']['tmp_name'], $destination);
 
-    $query = "insert into tbl_uploads(file,type,path) VALUES ('$filename','$fnm', '$destination')";
+    $query = "insert into tbl_uploads(file,type,path) VALUES ('$fnm','$ftype','$destination')";
     $result = mysqli_query($link, $query);
 
     if($result == true){
