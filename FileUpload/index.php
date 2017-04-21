@@ -1,5 +1,39 @@
 <?php
 include ('../registration/dbConnect.php');
+if(isset($_FILES['file_upload']))
+{
+    session_start();
+    $userID = $_SESSION['username'];
+    $name = $_FILES['file_upload']['name'];
+    $size = $_FILES['file_upload']['size'];
+    $tmp = $_FILES['file_upload']['tmp_name'];
+    $type = $_FILES['file_upload']['type'];
+
+    $folder = 'uploads/'. $_FILES['file_upload']['name'];
+
+    $moved = move_uploaded_file($tmp, $folder);
+
+    if ($moved){
+        $add = $link->prepare("insert into tbl_uploads values(?,?,?)");
+        $add ->bind_param($name,$tmp,$userID);
+        if ($add -> execute())
+        {
+            ?>
+            <script> alert(" Upload successful!")</script>
+
+        <?php
+        }
+        else{
+            ?>
+            <script> alert(" Upload Failed!")</script>
+<?php
+        }
+
+    }else{
+
+    }
+
+}
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -12,31 +46,11 @@ include ('../registration/dbConnect.php');
     <label>File Uploading With PHP and MySql</label>
 </div>
 <div id="body">
-    <form action="upload.php" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" />
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" name="file_upload" />
         <button type="submit" name="btn-upload">upload</button>
     </form>
-    <br /><br />
-    <?php
-    if(isset($_GET['success']))
-    {
-        ?>
-        <label>File Uploaded Successfully...  <a href="view.php">click here to view file.</a></label>
-        <?php
-    }
-    else if(isset($_GET['fail']))
-    {
-        ?>
-        <label>Problem While File Uploading !</label>
-        <?php
-    }
-    else
-    {
-        ?>
-        <label>Try to upload any files(PDF, DOC, EXE, VIDEO, MP3, ZIP,etc...)</label>
-        <?php
-    }
-    ?>
+
 </div>
 <div id="footer">
     <label>By <a href="http://cleartuts.blogspot.com">cleartuts.blogspot.com</a></label>
