@@ -1,7 +1,7 @@
 <?php
 include ('../registration/dbConnect.php');
 
-if(isset($_POST['btn_upload'])) {
+
 
 
     print_r($_FILES);
@@ -25,7 +25,7 @@ if(isset($_POST['btn_upload'])) {
     }
 
 }*/
-}
+
 ?>
 
 

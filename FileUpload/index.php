@@ -16,7 +16,7 @@ $res = mysqli_query($link, $sql);
 <div id="header">
     <form method="post" action="upload.php" enctype="multipart/form-data">
         <br>  <input type="file" name="file_upload" />
-        <button type="submit" name="btn-upload">upload</button>
+        <input type="submit" name="btn-upload" value="Upload File">
     </form>
 
 </div>
