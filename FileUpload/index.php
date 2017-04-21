@@ -38,7 +38,7 @@ if(isset($_POST['btn_upload']))
 </div>
 <div id="body">
     <form method="post" enctype="multipart/form-data">
-        <input type="file" name="file_upload" />
+      <br>  <input type="file" name="file_upload" />
         <button type="submit" name="btn-upload">upload</button>
     </form>
 
