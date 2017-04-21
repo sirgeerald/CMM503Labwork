@@ -43,7 +43,8 @@ if(isset($_FILES['file_upload']))
 </head>
 <body>
 <div id="header">
-    <label>File Uploading With PHP and MySql</label>
+    <label>File Uploading With PHP and MySql</label> <br>
+
 </div>
 <div id="body">
     <form method="post" enctype="multipart/form-data">
@@ -52,8 +53,6 @@ if(isset($_FILES['file_upload']))
     </form>
 
 </div>
-<div id="footer">
-    <label>By <a href="http://cleartuts.blogspot.com">cleartuts.blogspot.com</a></label>
-</div>
+
 </body>
 </html>
