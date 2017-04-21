@@ -1,0 +1,31 @@
+===Database localdb
+
+== Table structure for table users
+
+|------
+|Column|Type|Null|Default
+|------
+|//**userID**//|int(4)|No|
+|firstname|varchar(50)|No|
+|lastname|varchar(50)|No|
+|schoolID|varchar(7)|No|
+|email|varchar(250)|No|
+|pwd|varchar(64)|No|
+== Dumping data for table users
+
+|1|Kofi|Savage|1610605|1610605@rgu.ac.uk|password2
+|2|Ama|Mill|1610603|1610603@rgu.ac.uk|password2
+|3|Joe|Sapp|1610602|1610602@rgu.ac.uk|password2
+|4|Nana|Hammond|1610601|1610601@rgu.ac.uk|password2
+|5|Linda|Mettle|1610608|1610608@rgu.ac.uk|password2
+|6|Thomas|Maclean|1610600|1610005@rgu.ac.uk|password2
+|7|Singh|Rashmi|1610609|1610609@rgu.ac.uk|password2
+|8|Patrick|Holt|1610604|1610604@rgu.ac.uk|password2
+|9|David|Mensah|1610606|1610606@rgu.ac.uk|password2
+|10|Gerald|Awadzi|0909093|0909093@rgu.ac.uk|password1
+|11|Li|Min|0989898|0989898@rgu.ac.uk|password22
+|12|Man|Woman|0987654|0987654@gmail.com|password0987
+|13|Manda|Womana|0986543|0986543@gmail.co.uk|password22222
+|16|Work|This Time|6767574|6767574@gmail.com|password987
+|17|Mike|Crabbber|1658468|1658468@gmail.com|password098
+|18|HHhh|dfsdfs|0987567|0987567@ggg.com|Md5(0987567)
