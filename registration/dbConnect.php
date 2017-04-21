@@ -16,11 +16,11 @@ foreach ($_SERVER as $key => $value) {
 $link = mysqli_connect($connectstr_dbhost, $connectstr_dbusername, $connectstr_dbpassword, $connectstr_dbname);
 
 
-define('DB_SERVER', $connectstr_dbhost);
+/*define('DB_SERVER', $connectstr_dbhost);
 define('DB_USERNAME', $connectstr_dbname);
 define('DB_PASSWORD', $connectstr_dbusername);
 define('DB_DATABASE', $connectstr_dbpassword);
-$db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
+$db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);*/
 
 if (!$link) {
     echo "Error: Una ble to  connect to MySQL." . PHP_EOL;
