@@ -10,7 +10,7 @@ include ('../registration/dbConnect.php');
 
     $targetPath = $targetPath. basename($_FILES['file_upload']['name']);
 
-    if ($_FILES['file_upload']['size'] < 5000){
+    if ($_FILES['file_upload']['size'] < 2000){
         if (substr($_FILES['file_upload']['name'], -3) == 'txt'){
             if (move_uploaded_file($_FILES['file_upload']['tmp_name'], $targetPath)){
 
