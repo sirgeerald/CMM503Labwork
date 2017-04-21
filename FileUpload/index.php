@@ -15,7 +15,7 @@ if(isset($_FILES['file_upload']))
 
     if ($moved){
         $add = $link->prepare("insert into tbl_uploads values(?,?,?)");
-        $add ->bind_param($name,$tmp,$userID);
+        $add ->bind_param($name,$tmp,$size);
         if ($add -> execute())
         {
             ?>
