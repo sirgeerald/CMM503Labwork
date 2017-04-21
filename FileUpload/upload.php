@@ -2,7 +2,7 @@
 include ('../registration/dbConnect.php');
 if(isset($_POST['btn_upload']))
 {
-    session_start();
+
 
     $name = $_FILES['file_upload']['name'];
     $size = $_FILES['file_upload']['size'];
