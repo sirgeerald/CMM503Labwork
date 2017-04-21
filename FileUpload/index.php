@@ -1,11 +1,4 @@
-<?php
-include ('../registration/dbConnect.php');
 
-$sql = "SELECT * FROM tbl_uploads";
-
-$res = mysqli_query($link, $sql);
-
-?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -22,4 +15,37 @@ $res = mysqli_query($link, $sql);
 </div>
 
 </body>
+
+<?php
+include ('../registration/dbConnect.php');
+
+$filename = $_POST['file_upload'];
+
+if (isset($_POST['btn-upload'])){
+
+    $fnm = $_FILES['file_upload']['name'];
+    $destination = "./uploads/". $fnm;
+    move_uploaded_file($_FILES['file_upload']['tmp_name'], $destination);
+
+    $query = "insert into tbl_uploads(file,type,path) VALUES ('$filename','$fnm', '$destination')";
+    $result = mysqli_query($link, $query);
+
+    if($result == true){
+        ?>
+        <script> alert("File Uploaded"); </script>
+<?php
+    }
+    else{
+    ?>
+        <script> alert("Error Uploading file"); </script>
+        <?php
+    }
+
+
+}
+
+
+
+?>
+
 </html>

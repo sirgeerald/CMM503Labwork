@@ -17,16 +17,7 @@ include ('../registration/dbConnect.php');
 
                 echo "The file ". basename($_FILES['file_upload']['name']). " has been uploaded to " .$targetPath;
 
-                echo "<br><a href='$targetPath'> File Uploaded</a>";
 
-                $files = glob("uploads/*.*");
-
-                for ($i=0; $i<count($files); $i++) {
-                    $image = $files[$i];
-                    print $image ."<br />";
-
-                    echo "<br><a href='$image'> File Uploaded ".$i . "</a>";
-                }
 
 
             }else{
@@ -56,6 +47,20 @@ include ('../registration/dbConnect.php');
 
     }else{
         die("Please select a file ");
+
+
+
+
+    echo "<br><a href='$targetPath'> File Uploaded</a>";
+
+                $files = glob("uploads/*.*");
+
+                for ($i=0; $i<count($files); $i++) {
+                    $image = $files[$i];
+                    print $image ."<br />";
+
+                    echo "<br><a href='$image'> File Uploaded ".$i . "</a>";
+                }
     }
 
 }*/
