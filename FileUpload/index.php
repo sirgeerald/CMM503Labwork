@@ -16,7 +16,7 @@ if(isset($_POST['btn_upload']))
         $location = "uploads/$name";
         move_uploaded_file($tmp, $location);
 
-        $link -> query("insert into tbl_uploads (file,type,size) VALUES('".$location."','".$type."','".$size."')");
+        $link -> query("insert into tbl_uploads (file,type,size) VALUES('$location','$type','$size')");
         header('location: index.php');
 
     }else{
